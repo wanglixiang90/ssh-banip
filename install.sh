@@ -9,6 +9,7 @@ nali_cpumode=amd64
 OS_TYPE=$(uname -s)
 OS_CPU_ARCH=$(uname -m)
 OS_ID_LIKE=redhat
+WORKDIR=$(dirname $(readlink -f $0))
 
 get_os_release(){
     if [ -f /etc/redhat-release ]; then
@@ -101,7 +102,7 @@ EOF
 
 ssp_install(){
     # install shell
-    [ -f ./banip_ssh.sh ]&& chmod 0755 ./banip_ssh.sh && cp -f ./banip_ssh.sh /usr/local/bin/
+    [ -f ${WORKDIR}/banip_ssh.sh ]&& chmod 0755 ${WORKDIR}/banip_ssh.sh && cp -f ${WORKDIR}/banip_ssh.sh /usr/local/bin/
     # add crontab job, run job 30 min/per
     crontab -l|grep -v 'bash /usr/local/bin/banip_ssh.sh' | { cat; echo "*/30 * * * * bash /usr/local/bin/banip_ssh.sh"; } | crontab -
 }
