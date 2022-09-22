@@ -70,9 +70,9 @@ set_fail2ban_config(){
     jail_conf=/etc/fail2ban/jail.conf
     
     grep -r "^bantime.multipliers" ${jail_conf} > /dev/null ||sed -i '/1440 2880/abantime.multipliers = 5 60 1440 43200' ${jail_conf}
-    sed -i '40,200 s@^bantime.*@bantime = 1d@' ${jail_conf}
-    sed -i '40,200 s@^findtime.*@findtime = 10m@' ${jail_conf}
-    sed -i '40,200 s@^maxretry.*@maxretry = 5@' ${jail_conf}
+    sed -i '40,200 s@^bantime =.*@bantime = 1d@' ${jail_conf}
+    sed -i '40,200 s@^findtime =.*@findtime = 10m@' ${jail_conf}
+    sed -i '40,200 s@^maxretry =.*@maxretry = 5@' ${jail_conf}
     wait
 
     sudo cat >> ${jail_conf} <<EOF
