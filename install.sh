@@ -75,7 +75,7 @@ set_fail2ban_config(){
     sed -i '40,200 s@^maxretry =.*@maxretry = 5@' ${jail_conf}
     wait
 
-    sudo cat >> ${jail_conf} <<EOF
+    grep -r "\[ssh-iptables\]" ${jail_conf} > /dev/null ||sudo cat >> ${jail_conf} <<EOF
 
 [ssh-iptables]
 enabled = true
