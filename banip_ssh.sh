@@ -6,7 +6,7 @@
 logfile=/var/log/banip_ssh.log
 
 # white strings or ip list, '|' split string
-white_list="btmp begins|Cogent|加利福尼亚州洛杉矶Cogent通信"
+white_list="btmp begins|1.2.3.4|A省B市C区 D运营商"
 
 banip_list=($(last -f /var/log/btmp  |nali |grep -Ev "${white_list}" |awk '{print $3}' |sort -n |uniq))
 
