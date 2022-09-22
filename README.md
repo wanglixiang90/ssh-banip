@@ -6,7 +6,7 @@ ssh-banip 通过nali过滤白名单地理区域IP或IP地址，使用fail2ban自
 
 支持 centos7/debian9 以上操作系统
 
-先修改 banip-ssh.sh中 white_list 白名单参数，设置白名单过滤器，多个值使用| 分割追加.
+先修改 banip_ssh.sh中 white_list 白名单参数，设置白名单过滤器，多个值使用| 分割追加.
 ```bash
 white_list="btmp begins|1.2.3.4|5.6.7.8"
 or
